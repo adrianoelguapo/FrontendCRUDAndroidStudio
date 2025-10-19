@@ -38,6 +38,7 @@
 
             <!-- Título central -->
             <TextView
+                android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rappers Gallery"
@@ -80,6 +81,37 @@
             android:layout_marginTop="100dp"
             android:indeterminateTint="@android:color/white"
             android:visibility="visible" />
+
+        <!-- Botón Ver Todos -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/buttonShowAll"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/glass_button_modern"
+                android:paddingHorizontal="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver Todos"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <!-- FAB para añadir nuevo rapero -->
         <androidx.cardview.widget.CardView
