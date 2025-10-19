@@ -3,6 +3,7 @@ package com.akadoblee.frontendcrudandroidstudio;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,12 +34,10 @@ public class HomeActivity extends AppCompatActivity {
         setupRecyclerView();
         loadRappers();
 
-        // Configurar FAB (ahora es CardView)
+        // Configurar FAB
         CardView fabAdd = findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(v -> {
-            // Aquí iría la lógica para añadir nuevo rapero
-            // Por ahora solo mostraremos un mensaje
-            // Toast.makeText(HomeActivity.this, "Añadir nuevo rapero", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Añadir nuevo rapero - Próximamente", Toast.LENGTH_SHORT).show();
         });
 
         // Configurar botón volver
@@ -46,8 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Configurar botón buscar
         findViewById(R.id.searchButton).setOnClickListener(v -> {
-            // Lógica para buscar
-            // Toast.makeText(HomeActivity.this, "Buscar raperos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "Buscar raperos - Próximamente", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -65,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadRappers() {
-        String url = "http://192.168.1.41:3000/rappers";
+        String url = "http://192.168.1.34:3000/rappers";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -74,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
                 response -> {
                     loadingProgress.setVisibility(View.GONE);
                     try {
+                        rapperList.clear(); // Limpiar lista antes de agregar
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject rapperObject = response.getJSONObject(i);
                             Rapper rapper = new Rapper(
@@ -86,14 +85,21 @@ public class HomeActivity extends AppCompatActivity {
                             rapperList.add(rapper);
                         }
                         adapter.notifyDataSetChanged();
+
+                        if (rapperList.isEmpty()) {
+                            Toast.makeText(HomeActivity.this, "No se encontraron rappers", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Toast.makeText(HomeActivity.this, "Error al procesar los datos", Toast.LENGTH_SHORT).show();
                     }
                 },
                 error -> {
                     loadingProgress.setVisibility(View.GONE);
-                    // Manejar error
                     error.printStackTrace();
+                    Toast.makeText(HomeActivity.this,
+                            "Error de conexión: " + error.getMessage(),
+                            Toast.LENGTH_LONG).show();
                 }
         );
 

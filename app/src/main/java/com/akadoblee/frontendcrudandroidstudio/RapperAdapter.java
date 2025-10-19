@@ -4,7 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
@@ -32,6 +34,17 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
         holder.textAlbum.setText(rapper.getAlbum());
         holder.textSong.setText(rapper.getSong());
         holder.textId.setText("#" + rapper.getId());
+
+        // Configurar listeners para los botones
+        holder.buttonEdit.setOnClickListener(v -> {
+            // Lógica para editar (pendiente)
+            Toast.makeText(v.getContext(), "Editar: " + rapper.getAka(), Toast.LENGTH_SHORT).show();
+        });
+
+        holder.buttonDelete.setOnClickListener(v -> {
+            // Lógica para eliminar (pendiente)
+            Toast.makeText(v.getContext(), "Eliminar: " + rapper.getAka(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -41,6 +54,7 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
 
     static class RapperViewHolder extends RecyclerView.ViewHolder {
         TextView textAka, textName, textAlbum, textSong, textId;
+        CardView buttonEdit, buttonDelete;
 
         public RapperViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -49,6 +63,8 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
             textAlbum = itemView.findViewById(R.id.textAlbum);
             textSong = itemView.findViewById(R.id.textSong);
             textId = itemView.findViewById(R.id.textId);
+            buttonEdit = itemView.findViewById(R.id.buttonEdit);
+            buttonDelete = itemView.findViewById(R.id.buttonDelete);
         }
     }
 }
