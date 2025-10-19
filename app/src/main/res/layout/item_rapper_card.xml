@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/glass_card_background"
+        android:padding="20dp">
+
+        <!-- AKA (Nombre artístico) -->
+        <TextView
+            android:id="@+id/textAka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AKA"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.02" />
+
+        <!-- Nombre real -->
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textColor="#CCFFFFFF"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif"
+            android:layout_below="@id/textAka"
+            android:layout_marginTop="4dp" />
+
+        <!-- Información del álbum -->
+        <LinearLayout
+            android:id="@+id/albumLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/textName"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_album"
+                app:tint="#BB86FC"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/textAlbum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Album"
+                android:textColor="#E6FFFFFF"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <!-- Información de la canción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/albumLayout"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_music_note"
+                app:tint="#BB86FC"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/textSong"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Song"
+                android:textColor="#E6FFFFFF"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <!-- ID del rapero (badge) -->
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:textColor="#BB86FC"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:background="@drawable/id_badge_background"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/textAka" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

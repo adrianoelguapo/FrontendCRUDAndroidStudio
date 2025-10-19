@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo base gradiente -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#FF0C0023"
+                android:centerColor="#FF1A0038"
+                android:endColor="#FF2D004D"
+                android:angle="135" />
+        </shape>
+    </item>
+
+    <!-- Efecto de luz superior -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#304D007A"
+                android:endColor="#004D007A"
+                android:angle="90" />
+        </shape>
+    </item>
+
+    <!-- Efecto de luz inferior -->
+    <item
+        android:top="400dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#007C4DFF"
+                android:endColor="#00007C4D"
+                android:angle="270" />
+        </shape>
+    </item>
+</layer-list>
