@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.akadoblee.frontendcrudandroidstudio">
 
-    <!-- Permiso para internet -->
+    <!-- Permisos de red -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -17,8 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrontendCRUDAndroidStudio"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        tools:ignore="GoogleAppIndexingWarning">
 
+        <activity
+            android:name=".AddRapperActivity"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />

@@ -1,5 +1,6 @@
 package com.akadoblee.frontendcrudandroidstudio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -34,10 +35,11 @@ public class HomeActivity extends AppCompatActivity {
         setupRecyclerView();
         loadRappers();
 
-        // Configurar FAB
+        // Configurar FAB para redirigir a AddRapperActivity
         CardView fabAdd = findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(v -> {
-            Toast.makeText(HomeActivity.this, "Añadir nuevo rapero - Próximamente", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, AddRapperActivity.class);
+            startActivity(intent);
         });
 
         // Configurar botón volver
@@ -49,6 +51,13 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Recargar los datos cada vez que la actividad se reanude
+        loadRappers();
+    }
+
     private void initViews() {
         recyclerView = findViewById(R.id.rappersRecyclerView);
         loadingProgress = findViewById(R.id.loadingProgress);
@@ -57,12 +66,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
-        adapter = new RapperAdapter(rapperList);
+        adapter = new RapperAdapter(rapperList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
 
     private void loadRappers() {
+        loadingProgress.setVisibility(View.VISIBLE);
         String url = "http://192.168.1.34:3000/rappers";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -72,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
                 response -> {
                     loadingProgress.setVisibility(View.GONE);
                     try {
-                        rapperList.clear(); // Limpiar lista antes de agregar
+                        rapperList.clear();
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject rapperObject = response.getJSONObject(i);
                             Rapper rapper = new Rapper(
