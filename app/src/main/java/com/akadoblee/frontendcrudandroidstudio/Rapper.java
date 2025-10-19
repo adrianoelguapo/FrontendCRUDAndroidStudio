@@ -1,6 +1,8 @@
 package com.akadoblee.frontendcrudandroidstudio;
 
-public class Rapper {
+import java.io.Serializable;
+
+public class Rapper implements Serializable {
     private int id;
     private String aka;
     private String name;

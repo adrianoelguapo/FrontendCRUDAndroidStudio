@@ -3,6 +3,7 @@ package com.akadoblee.frontendcrudandroidstudio;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,8 +53,10 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
 
         // Configurar listener para botón editar
         holder.buttonEdit.setOnClickListener(v -> {
-            // Lógica para editar (pendiente)
-            Toast.makeText(context, "Editar: " + rapper.getAka(), Toast.LENGTH_SHORT).show();
+            // Abrir actividad de edición
+            Intent intent = new Intent(context, EditRapperActivity.class);
+            intent.putExtra("rapper", rapper);
+            context.startActivity(intent);
         });
 
         // Configurar listener para botón eliminar

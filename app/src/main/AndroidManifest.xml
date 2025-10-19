@@ -21,6 +21,9 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
+            android:name=".EditRapperActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddRapperActivity"
             android:exported="false" />
         <activity
