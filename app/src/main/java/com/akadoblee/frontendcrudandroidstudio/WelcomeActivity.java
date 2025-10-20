@@ -20,14 +20,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
         buttonCard = findViewById(R.id.buttonCard);
 
-        // Animación de entrada
         new Handler().postDelayed(() -> {
             Animation fadeIn = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
             buttonCard.startAnimation(fadeIn);
             buttonCard.setVisibility(View.VISIBLE);
         }, 500);
 
-        // Configurar click listener
         buttonCard.setOnClickListener(v -> {
             Animation scaleDown = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
             buttonCard.startAnimation(scaleDown);

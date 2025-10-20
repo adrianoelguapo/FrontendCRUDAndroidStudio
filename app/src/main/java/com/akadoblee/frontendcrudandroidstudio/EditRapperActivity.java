@@ -31,11 +31,15 @@ public class EditRapperActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private Rapper rapper;
     private String originalAka, originalName, originalAlbum, originalSong;
+    private String baseUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_rapper);
+
+        // Obtener la URL base desde strings.xml
+        baseUrl = getString(R.string.base_url);
 
         // Recibir el objeto Rapper de la actividad anterior
         rapper = (Rapper) getIntent().getSerializableExtra("rapper");
@@ -162,7 +166,7 @@ public class EditRapperActivity extends AppCompatActivity {
         loadingProgress.setVisibility(View.VISIBLE);
         buttonUpdate.setEnabled(false);
 
-        String url = "http://192.168.1.34:3000/rappers/modificar/" + rapper.getId();
+        String url = baseUrl + "/rappers/modificar/" + rapper.getId();
 
         StringRequest putRequest = new StringRequest(
                 Request.Method.PUT,

@@ -28,11 +28,15 @@ public class HomeActivity extends AppCompatActivity {
     private RapperAdapter adapter;
     private List<Rapper> rapperList;
     private RequestQueue requestQueue;
+    private String baseUrl; // Variable para almacenar la URL base
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
+        // Obtener la URL base desde strings.xml
+        baseUrl = getString(R.string.base_url);
 
         initViews();
         setupRecyclerView();
@@ -46,8 +50,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Configurar botón volver
-        findViewById(R.id.backButton).setOnClickListener(v -> finish());
+        // Configurar botón volver para redirigir a WelcomeActivity
+        findViewById(R.id.backButton).setOnClickListener(v -> {
+            navigateToWelcome();
+        });
 
         // Configurar botón buscar
         findViewById(R.id.searchButton).setOnClickListener(v -> {
@@ -77,7 +83,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void loadRappers() {
         loadingProgress.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.34:3000/rappers";
+        String url = baseUrl + "/rappers";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -193,7 +199,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void searchByAka(String aka) {
         loadingProgress.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.34:3000/rappers/aka/" + aka;
+        String url = baseUrl + "/rappers/aka/" + aka;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -246,7 +252,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void searchByName(String name) {
         loadingProgress.setVisibility(View.VISIBLE);
-        String url = "http://192.168.1.34:3000/rappers/name/" + name;
+        String url = baseUrl + "/rappers/name/" + name;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -295,5 +301,12 @@ public class HomeActivity extends AppCompatActivity {
         );
 
         requestQueue.add(jsonArrayRequest);
+    }
+
+    private void navigateToWelcome() {
+        Intent intent = new Intent(HomeActivity.this, WelcomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 }

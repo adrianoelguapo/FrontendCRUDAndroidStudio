@@ -17,7 +17,6 @@ public class Rapper implements Serializable {
         this.song = song;
     }
 
-    // Getters
     public int getId() { return id; }
     public String getAka() { return aka; }
     public String getName() { return name; }

@@ -15,7 +15,6 @@
         android:background="@drawable/glass_card_background"
         android:padding="20dp">
 
-        <!-- AKA (Nombre artístico) -->
         <TextView
             android:id="@+id/textAka"
             android:layout_width="wrap_content"
@@ -27,7 +26,6 @@
             android:fontFamily="sans-serif"
             android:letterSpacing="0.02" />
 
-        <!-- Nombre real -->
         <TextView
             android:id="@+id/textName"
             android:layout_width="wrap_content"
@@ -39,7 +37,6 @@
             android:layout_below="@id/textAka"
             android:layout_marginTop="4dp" />
 
-        <!-- Información del álbum -->
         <LinearLayout
             android:id="@+id/albumLayout"
             android:layout_width="match_parent"
@@ -70,7 +67,6 @@
 
         </LinearLayout>
 
-        <!-- Información de la canción -->
         <LinearLayout
             android:id="@+id/songLayout"
             android:layout_width="match_parent"
@@ -101,7 +97,6 @@
 
         </LinearLayout>
 
-        <!-- ID del rapero (badge) -->
         <TextView
             android:id="@+id/textId"
             android:layout_width="wrap_content"
@@ -117,7 +112,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@id/textAka" />
 
-        <!-- Botones de acción -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +121,6 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <!-- Botón Editar -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/buttonEdit"
                 android:layout_width="40dp"
@@ -146,7 +139,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Botón Eliminar -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/buttonDelete"
                 android:layout_width="40dp"

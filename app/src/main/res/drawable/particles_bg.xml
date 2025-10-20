@@ -5,7 +5,6 @@
     android:viewportWidth="200"
     android:viewportHeight="200">
 
-    <!-- Partículas decorativas para el fondo -->
     <group>
         <path
             android:fillColor="#15FFFFFF"

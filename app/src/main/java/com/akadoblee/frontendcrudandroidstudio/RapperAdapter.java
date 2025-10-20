@@ -27,11 +27,13 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
     private List<Rapper> rapperList;
     private RequestQueue requestQueue;
     private Context context;
+    private String baseUrl;
 
     public RapperAdapter(List<Rapper> rapperList, Context context) {
         this.rapperList = rapperList;
         this.context = context;
         this.requestQueue = Volley.newRequestQueue(context);
+        this.baseUrl = context.getString(R.string.base_url);
     }
 
     @NonNull
@@ -100,7 +102,7 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
     }
 
     private void deleteRapper(int rapperId, int position, String aka) {
-        String url = "http://192.168.1.34:3000/rappers/borrar/" + rapperId;
+        String url = baseUrl + "/rappers/borrar/" + rapperId;
 
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,

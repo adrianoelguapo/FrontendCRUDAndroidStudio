@@ -25,11 +25,14 @@ public class AddRapperActivity extends AppCompatActivity {
     private CardView buttonSave;
     private ProgressBar loadingProgress;
     private RequestQueue requestQueue;
+    private String baseUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rapper);
+
+        baseUrl = getString(R.string.base_url);
 
         initViews();
         setupListeners();
@@ -85,7 +88,7 @@ public class AddRapperActivity extends AppCompatActivity {
         loadingProgress.setVisibility(View.VISIBLE);
         buttonSave.setEnabled(false);
 
-        String url = "http://192.168.1.34:3000/rappers";
+        String url = baseUrl + "/rappers";
 
         StringRequest postRequest = new StringRequest(
                 Request.Method.POST,

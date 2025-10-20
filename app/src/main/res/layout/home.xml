@@ -7,7 +7,6 @@
     android:background="@drawable/background_gradient"
     tools:context=".HomeActivity">
 
-    <!-- Partículas de fondo -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,14 +18,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Toolbar personalizada -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:background="@android:color/transparent"
             android:padding="16dp">
 
-            <!-- Botón volver -->
             <ImageButton
                 android:id="@+id/backButton"
                 android:layout_width="48dp"
@@ -36,7 +33,6 @@
                 app:tint="@android:color/white"
                 android:layout_centerVertical="true" />
 
-            <!-- Título central -->
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
@@ -49,7 +45,6 @@
                 android:letterSpacing="0.02"
                 android:layout_centerInParent="true" />
 
-            <!-- Botón buscar -->
             <ImageButton
                 android:id="@+id/searchButton"
                 android:layout_width="48dp"
@@ -62,7 +57,6 @@
 
         </RelativeLayout>
 
-        <!-- RecyclerView para las tarjetas -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rappersRecyclerView"
             android:layout_width="match_parent"
@@ -72,7 +66,6 @@
             android:clipToPadding="false"
             android:scrollbars="vertical" />
 
-        <!-- Loading indicator -->
         <ProgressBar
             android:id="@+id/loadingProgress"
             android:layout_width="wrap_content"
@@ -82,7 +75,6 @@
             android:indeterminateTint="@android:color/white"
             android:visibility="visible" />
 
-        <!-- Botón Ver Todos -->
         <androidx.cardview.widget.CardView
             android:id="@+id/buttonShowAll"
             android:layout_width="120dp"
@@ -113,7 +105,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- FAB para añadir nuevo rapero -->
         <androidx.cardview.widget.CardView
             android:id="@+id/fabAdd"
             android:layout_width="56dp"
