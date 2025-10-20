@@ -38,10 +38,8 @@ public class EditRapperActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_rapper);
 
-        // Obtener la URL base desde strings.xml
         baseUrl = getString(R.string.base_url);
 
-        // Recibir el objeto Rapper de la actividad anterior
         rapper = (Rapper) getIntent().getSerializableExtra("rapper");
 
         initViews();
@@ -59,7 +57,6 @@ public class EditRapperActivity extends AppCompatActivity {
         buttonUpdate = findViewById(R.id.buttonUpdate);
         loadingProgress = findViewById(R.id.loadingProgress);
 
-        // Configurar botón volver
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
     }
 
@@ -122,14 +119,13 @@ public class EditRapperActivity extends AppCompatActivity {
             }
         });
 
-        // Personalizar el diálogo
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialogInterface) {
-                // Cambiar color del botón positivo (verde para actualizar)
+
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(android.R.color.holo_green_dark));
-                // Cambiar color del botón negativo (gris para cancelar)
+
                 dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(android.R.color.darker_gray));
             }
         });
@@ -162,7 +158,6 @@ public class EditRapperActivity extends AppCompatActivity {
     }
 
     private void updateRapper() {
-        // Mostrar loading
         loadingProgress.setVisibility(View.VISIBLE);
         buttonUpdate.setEnabled(false);
 
@@ -183,7 +178,6 @@ public class EditRapperActivity extends AppCompatActivity {
 
                             Toast.makeText(EditRapperActivity.this, "✅ " + message, Toast.LENGTH_SHORT).show();
 
-                            // Redirigir a HomeActivity
                             Intent intent = new Intent(EditRapperActivity.this, HomeActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);

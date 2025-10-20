@@ -28,14 +28,13 @@ public class HomeActivity extends AppCompatActivity {
     private RapperAdapter adapter;
     private List<Rapper> rapperList;
     private RequestQueue requestQueue;
-    private String baseUrl; // Variable para almacenar la URL base
+    private String baseUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        // Obtener la URL base desde strings.xml
         baseUrl = getString(R.string.base_url);
 
         initViews();
@@ -43,19 +42,16 @@ public class HomeActivity extends AppCompatActivity {
         setupViewAllButton();
         loadRappers();
 
-        // Configurar FAB para redirigir a AddRapperActivity
         CardView fabAdd = findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, AddRapperActivity.class);
             startActivity(intent);
         });
 
-        // Configurar botón volver para redirigir a WelcomeActivity
         findViewById(R.id.backButton).setOnClickListener(v -> {
             navigateToWelcome();
         });
 
-        // Configurar botón buscar
         findViewById(R.id.searchButton).setOnClickListener(v -> {
             showSearchDialog();
         });
@@ -64,7 +60,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Recargar los datos cada vez que la actividad se reanude
         loadRappers();
     }
 
@@ -138,7 +133,6 @@ public class HomeActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Buscar Rapero");
 
-        // Diseño personalizado del diálogo
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_search, null);
         builder.setView(dialogView);
 

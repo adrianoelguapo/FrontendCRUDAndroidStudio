@@ -47,7 +47,6 @@ public class AddRapperActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         loadingProgress = findViewById(R.id.loadingProgress);
 
-        // Configurar botón volver
         findViewById(R.id.backButton).setOnClickListener(v -> finish());
     }
 
@@ -84,7 +83,6 @@ public class AddRapperActivity extends AppCompatActivity {
     }
 
     private void addRapper() {
-        // Mostrar loading
         loadingProgress.setVisibility(View.VISIBLE);
         buttonSave.setEnabled(false);
 
@@ -105,7 +103,6 @@ public class AddRapperActivity extends AppCompatActivity {
 
                             Toast.makeText(AddRapperActivity.this, "✅ " + message, Toast.LENGTH_SHORT).show();
 
-                            // Redirigir a HomeActivity - ahora se recargarán automáticamente los datos
                             Intent intent = new Intent(AddRapperActivity.this, HomeActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);

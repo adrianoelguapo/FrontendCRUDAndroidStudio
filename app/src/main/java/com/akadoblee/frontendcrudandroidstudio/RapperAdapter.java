@@ -53,15 +53,12 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
         holder.textSong.setText(rapper.getSong());
         holder.textId.setText("#" + rapper.getId());
 
-        // Configurar listener para botón editar
         holder.buttonEdit.setOnClickListener(v -> {
-            // Abrir actividad de edición
             Intent intent = new Intent(context, EditRapperActivity.class);
             intent.putExtra("rapper", rapper);
             context.startActivity(intent);
         });
 
-        // Configurar listener para botón eliminar
         holder.buttonDelete.setOnClickListener(v -> {
             showDeleteConfirmationDialog(rapper.getId(), position, rapper.getAka());
         });
@@ -114,7 +111,6 @@ public class RapperAdapter extends RecyclerView.Adapter<RapperAdapter.RapperView
                             JSONObject jsonResponse = new JSONObject(response);
                             String message = jsonResponse.getString("message");
 
-                            // Remover el elemento de la lista
                             rapperList.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, rapperList.size());
